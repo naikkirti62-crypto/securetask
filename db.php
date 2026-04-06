@@ -5,11 +5,11 @@
  * Get these from Railway → MySQL service → Variables tab
  */
 
-define('DB_HOST',    getenv('MYSQLHOST')     ?: 'mysql.railway.internal');
-define('DB_PORT',    getenv('MYSQLPORT')     ?: '3306');
-define('DB_NAME',    getenv('MYSQLDATABASE') ?: 'railway');
-define('DB_USER',    getenv('MYSQLUSER')     ?: 'root');
-define('DB_PASS',    getenv('MYSQLPASSWORD') ?: 'JNXQHWjohfiSeVgYUFOEyUldHeoOUqXq');
+define('DB_HOST',    'mysql.railway.internal');
+define('DB_PORT',    '3306');
+define('DB_NAME',    'railway');
+define('DB_USER',    'root');
+define('DB_PASS',    'JNXQHWjohfiSeVgYUFOEyUldHeoOUqXq');
 define('DB_CHARSET', 'utf8mb4');
 
 function db(): PDO {
