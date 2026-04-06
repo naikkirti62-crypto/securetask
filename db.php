@@ -1,15 +1,15 @@
 <?php
 /**
  * SecureTask — db.php
- * CHANGE DB_NAME, DB_USER, DB_PASS to match your setup
- * XAMPP default: DB_USER=root, DB_PASS=''
+ * Railway MySQL credentials
+ * Get these from Railway → MySQL service → Variables tab
  */
 
-define('DB_HOST',    'localhost');
-define('DB_PORT',    '3306');
-define('DB_NAME',    'securetask');
-define('DB_USER',    'root');
-define('DB_PASS',    '');
+define('DB_HOST',    getenv('MYSQLHOST')     ?: 'mysql.railway.internal');
+define('DB_PORT',    getenv('MYSQLPORT')     ?: '3306');
+define('DB_NAME',    getenv('MYSQLDATABASE') ?: 'railway');
+define('DB_USER',    getenv('MYSQLUSER')     ?: 'root');
+define('DB_PASS',    getenv('MYSQLPASSWORD') ?: 'JNXQHWjohfiSeVgYUFOEyUldHeoOUqXq');
 define('DB_CHARSET', 'utf8mb4');
 
 function db(): PDO {
@@ -37,11 +37,7 @@ p{color:#9090b0;font-size:14px;line-height:1.7;margin:.5rem 0}
 <div class="box">
 <h2>&#9888; Database Connection Failed</h2>
 <p><strong style="color:#fff">Error:</strong> ' . htmlspecialchars($e->getMessage()) . '</p>
-<p>Open <code>db.php</code> and fix your credentials:</p>
-<p><code>DB_NAME</code> = your database name (e.g. <code>securetask</code>)<br>
-<code>DB_USER</code> = your MySQL username (XAMPP = <code>root</code>)<br>
-<code>DB_PASS</code> = your MySQL password (XAMPP = <code>empty</code>)</p>
-<p>Then run <code>reset.sql</code> in phpMyAdmin to create the tables.</p>
+<p>Go to Railway → MySQL service → Variables tab and copy these values into db.php</p>
 </div></body></html>');
         }
     }
